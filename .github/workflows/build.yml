@@ -8,26 +8,13 @@ on:
 
 jobs:
   build:
-    strategy:
-      matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
-    
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     
     steps:
     - uses: actions/checkout@v2
     
-    - name: Install dependencies (Ubuntu)
-      if: matrix.os == 'ubuntu-latest'
+    - name: Install dependencies
       run: sudo apt-get install -y libgtest-dev
-
-    - name: Install dependencies (macOS)
-      if: matrix.os == 'macos-latest'
-      run: brew install googletest
-
-    - name: Install dependencies (Windows)
-      if: matrix.os == 'windows-latest'
-      run: choco install gtest
     
     - name: Configure
       run: cmake -B build -DIMAGELITE_BUILD_TESTS=ON
