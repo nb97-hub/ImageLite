@@ -5,7 +5,7 @@
 #include <string>
 #include "imagelite/platform_info.h"
 #include "imagelite/formats.h"
-
+ 
 void print_supported_formats()
 {
     std::cout << "ImageLite supports " << imagelite::FORMAT_COUNT << " formats:\n";
